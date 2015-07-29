@@ -1,0 +1,16 @@
+Package: qiitr
+Type: Package
+Title: R Binding for Qiita API v2
+Version: 0.0.1
+Date: 2015-07-29
+Author: Hiroaki Yutani
+Maintainer: Hiroaki Yutani <yutani.ini@gmail.com>
+Description: Qiita is a programmer-friendly web service where we can share Markdown documents easily.
+License: MIT
+URL: https://github.com/yutannihilation/qiitr
+Imports:
+  R6,
+  httr,
+  jsonlite
+LazyData: TRUE
+Encoding: UTF-8
