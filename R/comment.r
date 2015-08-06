@@ -6,7 +6,7 @@
 #' @param item_id article ID
 #' @export
 qiita_get_comment <- function(url, token, comment_id = NULL, item_id = NULL) {
-  if(!is.null(comment_id) && !is.null(item_id)) stop("You cannot specify commend_id and item_id both")
+  if(!is.null(comment_id) && !is.null(item_id)) stop("You cannot specify comment_id and item_id both")
   if(is.null(comment_id) && is.null(item_id))   stop("Please specify commend_id or item_id")
 
   if(!is.null(comment_id)){

@@ -6,6 +6,15 @@
 \usage{
 qiita_get_stocker(url, token, item_id)
 }
+\arguments{
+\item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
+
+\item{token}{Qiita API token}
+
+\item{item_id}{item id}
+
+\item{user_id}{user id}
+}
 \description{
 Qiita User API
 }

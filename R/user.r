@@ -1,5 +1,9 @@
 #' Qiita User API
 #'
+#' @param url URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")
+#' @param token Qiita API token
+#' @param user_id user id
+#' @param item_id item id
 #' @export
 qiita_get_stocker <- function(url, token, item_id) {
   path <- sprintf("/api/v2/items/%s/stockers", item_id)
@@ -40,4 +44,10 @@ qiita_get_userfollow <- function(url, token, user_id) {
 qiita_put_userfollow <- function(url, token, user_id) {
   path <- sprintf("/api/v2/users/%s/following", user_id)
   qiita_api("PUT", url = url, path = path, token = token)
+}
+
+#' @export
+qiita_get_authenticated_user <- function(url, token) {
+  path <- "/api/v2/authenticated_user"
+  qiita_api("GET", url = url, path = path, token = token)
 }

@@ -7,7 +7,11 @@
 #' @export
 qiita_get_tag <- function(url, token, tag_id = NULL, user_id = NULL) {
   if(!is.null(tag_id) && !is.null(user_id)) stop("You cannot specify tag_id and user_id both")
-  if(is.null(tag_id) && is.null(user_id))   stop("Please specify tag_id or user_id")
+
+  if(is.null(tag_id) && is.null(user_id)) {
+    path <- "/api/v2/tags"
+    return(qiita_api("GET", url = url, path = path, token = token))
+  }
 
   if(!is.null(tag_id)){
     path <- paste0("/api/v2/tags", tag_id, sep = "/")

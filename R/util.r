@@ -17,11 +17,19 @@ qiita_tag <- function(name, version = NULL) {
 }
 
 #' @export
-qiita_payload <- function(body) {
+qiita_payload <- function(body = NULL, title = NULL, tags = NULL, gist = NULL, private = NULL, tweet = NULL) {
   payload <- list()
-  payload$body <- body
+
+  payload$body   <- body
+  payload$title  <- title
+  payload$tags   <- tags
+  payload$private <- private
+  payload$tweet  <- tweet
+
   jsonlite::toJSON(payload, auto_unbox = TRUE)
 }
+
+
 
 #' @title A httr Wrapper for Qiita API
 #'
@@ -41,3 +49,4 @@ qiita_api <- function(verb, url, path, token, payload = NULL, query = NULL) {
 
   httr::content(res)
 }
+
