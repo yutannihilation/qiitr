@@ -4,7 +4,8 @@
 \alias{qiita_api}
 \title{A httr Wrapper for Qiita API}
 \usage{
-qiita_api(verb, url, path, token, payload = NULL, query = NULL)
+qiita_api(verb, url, path, token, payload = NULL, query = NULL,
+  per_page = 100, page = 1, get_all = FALSE)
 }
 \arguments{
 \item{verb}{method type (GET, POST, DELETE, etc..)}
@@ -18,6 +19,12 @@ qiita_api(verb, url, path, token, payload = NULL, query = NULL)
 \item{payload}{JSON payload}
 
 \item{query}{URI quer}
+
+\item{per_page}{number of items/tags/users/etc. in one page}
+
+\item{page}{number of the page (This param is ignored when get_all is TRUE)}
+
+\item{get_all}{whethear or not to get all items/tags/users/etc.}
 }
 \description{
 A httr Wrapper for Qiita API
