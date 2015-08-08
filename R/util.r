@@ -39,7 +39,7 @@ qiita_payload <- function(body = NULL, title = NULL, tags = NULL, gist = NULL, p
 #' @param token Qiita API token
 #' @param path path of API
 #' @param payload JSON payload
-#' @param query URI query
+#' @param query URI quer
 #' @export
 qiita_api <- function(verb, url, path, token, payload = NULL, query = NULL) {
   res <- httr::VERB(verb, url = url, path = path,
@@ -47,6 +47,7 @@ qiita_api <- function(verb, url, path, token, payload = NULL, query = NULL) {
                                         `Authorization` = paste("Bearer", token)),
              body = payload, query = query)
 
-  httr::content(res)
+  # FIXME: specifying `type` is a temporal workaround to avoid error with mime::guess_type()
+  httr::content(res, encoding = "UTF-8", type = "application/json")
 }
 

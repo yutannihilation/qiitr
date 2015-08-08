@@ -17,7 +17,7 @@ qiita_api(verb, url, path, token, payload = NULL, query = NULL)
 
 \item{payload}{JSON payload}
 
-\item{query}{URI query}
+\item{query}{URI quer}
 }
 \description{
 A httr Wrapper for Qiita API
