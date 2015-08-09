@@ -18,5 +18,5 @@ devtools::install_github("yutannihilation/qiitr")
 
 ```r
 q <- Qiita$new(token = "abcdefghijk")
-q$get_comment(comment_id = "test")
+q$get_item(tag_id = "ggplot2逆引き", page_limit = 5L)
 ```
