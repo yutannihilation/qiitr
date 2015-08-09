@@ -5,7 +5,7 @@
 \title{Qiita Item API}
 \usage{
 qiita_get_item(url, token, item_id = NULL, tag_id = NULL, user_id = NULL,
-  query = NULL)
+  query = NULL, per_page = 100L, page_offset = 0L, page_limit = 1L)
 }
 \description{
 Qiita Item API

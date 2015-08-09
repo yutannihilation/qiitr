@@ -4,7 +4,8 @@
 \alias{qiita_api}
 \title{A httr Wrapper for Qiita API}
 \usage{
-qiita_api(verb, url, path, token, payload = NULL, query = NULL)
+qiita_api(verb, url, path, token, payload = NULL, query = NULL,
+  per_page = 100L, page_offset = 0L, page_limit = 1L)
 }
 \arguments{
 \item{verb}{method type (GET, POST, DELETE, etc..)}
@@ -18,6 +19,12 @@ qiita_api(verb, url, path, token, payload = NULL, query = NULL)
 \item{payload}{JSON payload}
 
 \item{query}{URI quer}
+
+\item{per_page}{number of items/tags/users/etc. in one page}
+
+\item{page_offset}{page number to start}
+
+\item{page_limit}{the number of pages where no more requests will be sent}
 }
 \description{
 A httr Wrapper for Qiita API

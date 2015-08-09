@@ -4,7 +4,8 @@
 \alias{qiita_get_stocker}
 \title{Qiita User API}
 \usage{
-qiita_get_stocker(url, token, item_id)
+qiita_get_stocker(url, token, item_id, per_page = 100L, page_offset = 0L,
+  page_limit = 1L)
 }
 \arguments{
 \item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
