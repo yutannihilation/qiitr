@@ -5,7 +5,7 @@
 \title{A httr Wrapper for Qiita API}
 \usage{
 qiita_api(verb, url, path, token, payload = NULL, query = NULL,
-  per_page = 100, page = 1, get_all = FALSE)
+  per_page = 100L, page_offset = 0L, page_limit = 1L)
 }
 \arguments{
 \item{verb}{method type (GET, POST, DELETE, etc..)}
@@ -22,9 +22,9 @@ qiita_api(verb, url, path, token, payload = NULL, query = NULL,
 
 \item{per_page}{number of items/tags/users/etc. in one page}
 
-\item{page}{number of the page (This param is ignored when get_all is TRUE)}
+\item{page_offset}{page number to start}
 
-\item{get_all}{whethear or not to get all items/tags/users/etc.}
+\item{page_limit}{the number of pages where no more requests will be sent}
 }
 \description{
 A httr Wrapper for Qiita API

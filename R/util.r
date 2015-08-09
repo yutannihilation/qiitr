@@ -17,17 +17,18 @@ qiita_tag <- function(name, version = NULL) {
 }
 
 #' @export
-qiita_payload <- function(body = NULL, title = NULL, tags = NULL, gist = NULL, private = NULL, tweet = NULL) {
-  payload <- list()
+qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
+                          gist = NULL, private = NULL, tweet = NULL) {
+    payload <- list()
 
-  payload$body   <- body
-  payload$title  <- title
-  payload$tags   <- tags
-  payload$private <- private
-  payload$tweet  <- tweet
+    payload$body   <- body
+    payload$title  <- title
+    payload$tags   <- tags
+    payload$private <- private
+    payload$tweet  <- tweet
 
-  jsonlite::toJSON(payload, auto_unbox = TRUE)
-}
+    jsonlite::toJSON(payload, auto_unbox = TRUE)
+  }
 
 
 
@@ -41,37 +42,51 @@ qiita_payload <- function(body = NULL, title = NULL, tags = NULL, gist = NULL, p
 #' @param payload JSON payload
 #' @param query URI quer
 #' @param per_page number of items/tags/users/etc. in one page
-#' @param page number of the page (This param is ignored when get_all is TRUE)
-#' @param get_all whethear or not to get all items/tags/users/etc.
+#' @param page_offset page number to start
+#' @param page_limit the number of pages where no more requests will be sent
 #' @export
-qiita_api <- function(verb, url, path, token, payload = NULL, query = NULL, per_page = 100, page = 1, get_all = FALSE) {
-  if(any(c("per_page", "page") %in% names(query))) warning("per_page and page in query is overwritten")
+qiita_api <- function(verb, url, path, token, payload = NULL, query = NULL,
+                      per_page = 100L, page_offset = 0L, page_limit = 1L) {
 
-  if(is.null(query)) query <- list()
+  if (is.null(query)) query <- list()
   query$per_page <- per_page
-  query$page     <- ifelse(get_all, 1, page) #When getting all pages, attempts should start from page 1
+  query$page     <- start_page <- 1 + page_offset
 
   header <- httr::add_headers(`Content-Type`  = "application/json",
                               `Authorization` = paste("Bearer", token))
 
-  res <- httr::VERB(verb, url = url, path = path,
-             config = header, body = payload, query = query)
+  res <- httr::VERB(
+    verb, url = url, path = path,
+    config = header, body = payload, query = query
+  )
 
   # FIXME: specifying `type` is a temporal workaround to avoid error with mime::guess_type()
-  result <- httr::content(res, encoding = "UTF-8", type = "application/json")
+  result <-
+    httr::content(res, encoding = "UTF-8", type = "application/json")
 
-  total_count <- res$headers$`total-count`
-  cat("total count is", total_count)
+  total_count <- as.integer(res$headers$`total-count`)
+  total_page  <- ceiling(total_count / per_page)
+  end_page    <- min(total_page, page_offset + page_limit)
 
-  if(total_count > per_page && get_all) {
-    for(p in seq(2, trunc(total_count/per_page)+1)) {
-      query$page <- p
+  message(sprintf("total count is %d (= %d pages)", total_count, total_page))
 
-      res <- httr::VERB(verb, url = url, path = path,
-                        config = header, body = payload, query = query)
+  if (end_page <= start_page) {
+    return(result)
+  }
 
-      result <- c(result, httr::content(res, encoding = "UTF-8", type = "application/json"))
-    }
+  for (p in seq(start_page + 1, end_page)) {
+    message(sprintf("getting page %s...", p))
+    query$page <- p
+
+    res <- httr::VERB(
+      verb, url = url, path = path,
+      config = header, body = payload, query = query
+    )
+
+    result <- c(
+      result,
+      httr::content(res, encoding = "UTF-8", type = "application/json")
+    )
   }
 
   result

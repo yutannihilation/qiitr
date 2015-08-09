@@ -4,7 +4,8 @@
 \alias{qiita_get_comment}
 \title{Qiita Comment API}
 \usage{
-qiita_get_comment(url, token, comment_id = NULL, item_id = NULL)
+qiita_get_comment(url, token, comment_id = NULL, item_id = NULL,
+  per_page = 100L, page_offset = 0L, page_limit = 1L)
 }
 \arguments{
 \item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
