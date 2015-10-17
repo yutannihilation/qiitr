@@ -1,5 +1,20 @@
-# Sample .travis.yml for R projects
-
-language: r
-warnings_are_errors: true
 sudo: required
+
+language: c
+
+before_install:
+  ## r-travis by Craig Citro et al
+  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+
+install:
+  - ./travis-tool.sh install_aptget r-cran-jsonlite r-cran-httr r-cran-r6
+
+script:
+  - ./travis-tool.sh run_tests
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
