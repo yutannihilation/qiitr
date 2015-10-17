@@ -9,7 +9,7 @@ before_install:
   - ./travis-tool.sh bootstrap
 
 install:
-  - ./travis-tool.sh install_aptget r-cran-jsonlite r-cran-httr r-cran-r6
+  - ./travis-tool.sh install_aptget r-cran-testthat r-cran-jsonlite r-cran-httr r-cran-r6
 
 script:
   - ./travis-tool.sh run_tests
