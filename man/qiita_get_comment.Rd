@@ -15,6 +15,12 @@ qiita_get_comment(url, token, comment_id = NULL, item_id = NULL,
 \item{comment_id}{comment ID}
 
 \item{item_id}{article ID}
+
+\item{per_page}{number of items per one page}
+
+\item{page_offset}{page offset}
+
+\item{page_limit}{max number of pages to aquire.}
 }
 \description{
 Qiita Comment API

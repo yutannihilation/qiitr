@@ -4,6 +4,9 @@
 #' @param token Qiita API token
 #' @param comment_id comment ID
 #' @param item_id article ID
+#' @param per_page number of items per one page
+#' @param page_offset page offset
+#' @param page_limit max number of pages to aquire.
 #' @export
 qiita_get_comment <- function(url, token, comment_id = NULL, item_id = NULL,
                               per_page = 100L, page_offset = 0L, page_limit = 1L) {

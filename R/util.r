@@ -3,7 +3,7 @@
 #' @import jsonlite
 #'
 #' @examples
-#' tag(name = "R", version = ">3.1")
+#' qiita_tag(name = "R", version = ">3.1")
 #'
 #' @param name tag name
 #' @param version version
