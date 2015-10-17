@@ -2,11 +2,13 @@
 #'
 #' @import jsonlite
 #'
-#' @examples
-#' qiita_tag(name = "R", version = ">3.1")
+#' @name util
 #'
 #' @param name tag name
 #' @param version version
+#'
+#' @examples
+#' qiita_tag(name = "R", version = ">3.1")
 #'
 #' @export
 qiita_tag <- function(name, version = NULL) {
@@ -16,6 +18,7 @@ qiita_tag <- function(name, version = NULL) {
   x
 }
 
+#' @rdname util
 #' @export
 qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
                           gist = NULL, private = NULL, tweet = NULL) {
@@ -34,6 +37,7 @@ qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
 
 #' @title A httr Wrapper for Qiita API
 #'
+#' @name qiita_api
 #' @import httr
 #' @param verb method type (GET, POST, DELETE, etc..)
 #' @param url URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")

@@ -6,9 +6,9 @@ Date: 2015-07-29
 Author: Hiroaki Yutani
 Maintainer: Hiroaki Yutani <yutani.ini@gmail.com>
 Description: Qiita is a programmer-friendly web service where we can share Markdown documents easily.
-License: MIT
+License: MIT + file LICENSE
 URL: https://github.com/yutannihilation/qiitr
-Imports: 
+Imports:
   R6,
   httr,
   jsonlite

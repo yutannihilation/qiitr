@@ -1,5 +1,21 @@
 #' Qiita Item API
 #'
+#' @name item
+#' @param url URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")
+#' @param token Qiita API token
+#' @param item_id item(article) ID
+#' @param query query string
+#' @param user_id user ID
+#' @param per_page number of items per one page
+#' @param page_offset page offset
+#' @param page_limit max number of pages to aquire.
+#' @param tag_id tag ID
+#' @param title title of the item
+#' @param body body of the item
+#' @param tags tags of the item
+#' @param gist push to gist or not
+#' @param private private or not
+#' @param tweet tweet or not
 #' @export
 qiita_get_item <- function (url, token,
                             item_id = NULL, tag_id = NULL, user_id = NULL, query = NULL,
@@ -43,6 +59,7 @@ qiita_get_item <- function (url, token,
   }
 }
 
+#' @rdname item
 #' @export
 qiita_post_item <- function(url, token, title, body, tags = list(qiita_tag("R")),
                             gist = FALSE, private = FALSE, tweet = FALSE) {
@@ -60,12 +77,14 @@ qiita_post_item <- function(url, token, title, body, tags = list(qiita_tag("R"))
             payload = payload)
 }
 
+#' @rdname item
 #' @export
 qiita_delete_item <- function(url, token, item_id) {
   path <- sprintf("/api/v2/items/%s", item_id)
   qiita_api("GET", url = url, path = path, token = token)
 }
 
+#' @rdname item
 #' @export
 qiita_patch_item <- function(url, token,
                              item_id, title, body,
@@ -82,12 +101,14 @@ qiita_patch_item <- function(url, token,
             payload = payload)
 }
 
+#' @rdname item
 #' @export
 qiita_delete_stock <- function(url, token, item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)
   qiita_api("DELETE", url = url, path = path, token = token)
 }
 
+#' @rdname item
 #' @export
 qiita_get_stock <- function(url, token, item_id = NULL, user_id = NULL,
                             per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -111,6 +132,7 @@ qiita_get_stock <- function(url, token, item_id = NULL, user_id = NULL,
   }
 }
 
+#' @rdname item
 #' @export
 qiita_put_stock <- function(url, token, item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)

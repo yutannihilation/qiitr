@@ -1,9 +1,13 @@
 #' Qiita Tagging API
 #'
+#' @name tag
 #' @param url URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")
 #' @param token Qiita API token
-#' @param user_id user id
-#' @param tag_id tag id
+#' @param user_id user ID
+#' @param tag_id tag ID
+#' @param per_page number of items per one page
+#' @param page_offset page offset
+#' @param page_limit max number of pages to aquire.
 #' @export
 qiita_get_tag <- function(url, token, tag_id = NULL, user_id = NULL,
                           per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -32,6 +36,7 @@ qiita_get_tag <- function(url, token, tag_id = NULL, user_id = NULL,
   }
 }
 
+#' @rdname tag
 #' @export
 qiita_get_following_tag <- function(url, token, user_id,
                                     per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -41,12 +46,14 @@ qiita_get_following_tag <- function(url, token, user_id,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
+#' @rdname tag
 #' @export
 qiita_delete_tagfollow <- function(url, token, tag_id) {
   path <- sprintf("/api/v2/tags/:tag_id/following", tag_id)
   qiita_api("DELETE", url = url, path = path, token = token)
 }
 
+#' @rdname tag
 #' @export
 qiita_get_tagfollow <- function(url, token, tag_id,
                                 per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -55,6 +62,7 @@ qiita_get_tagfollow <- function(url, token, tag_id,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
+#' @rdname tag
 #' @export
 qiita_put_tagfollow <- function(url, token, tag_id) {
   path <- sprintf("/api/v2/tags/:tag_id/following", tag_id)
