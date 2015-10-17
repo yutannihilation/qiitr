@@ -6,6 +6,12 @@
 #'
 #' @param name tag name
 #' @param version version
+#' @param body body
+#' @param title title
+#' @param tags tags
+#' @param gist gist
+#' @param private private
+#' @param tweet tweet
 #'
 #' @examples
 #' qiita_tag(name = "R", version = ">3.1")

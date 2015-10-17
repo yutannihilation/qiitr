@@ -42,7 +42,6 @@ qiita_get_following_tag <- function(url, token, user_id,
                                     per_page = 100L, page_offset = 0L, page_limit = 1L) {
   path <- sprintf("/api/v2/users/%s/following_tags", user_id)
   qiita_api("GET", url = url, path = path, token = token,
-            payload = qiita_payload(body = tag),
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 

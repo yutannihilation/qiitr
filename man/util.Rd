@@ -15,6 +15,18 @@ qiita_payload(body = NULL, title = NULL, tags = NULL, gist = NULL,
 \item{name}{tag name}
 
 \item{version}{version}
+
+\item{body}{body}
+
+\item{title}{title}
+
+\item{tags}{tags}
+
+\item{gist}{gist}
+
+\item{private}{private}
+
+\item{tweet}{tweet}
 }
 \description{
 Utililies

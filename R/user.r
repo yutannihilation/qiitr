@@ -20,7 +20,7 @@ qiita_get_stocker <- function(url, token, item_id,
 #' @export
 qiita_get_user <- function(url, token, user_id,
                            per_page = 100L, page_offset = 0L, page_limit = 1L) {
-  path <- paste0("/api/v2/users", tag_id, sep = "/")
+  path <- paste0("/api/v2/users", user_id, sep = "/")
   qiita_api("GET", url = url, path = path, token = token,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }

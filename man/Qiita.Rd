@@ -4,7 +4,7 @@
 \name{Qiita}
 \alias{Qiita}
 \title{An R6 Class for Qiita API}
-\format{\preformatted{Class 'R6ClassGenerator' <environment: 0x0000000016e79ce0> 
+\format{\preformatted{Class 'R6ClassGenerator' <environment: 0x0000000016e797c8> 
  - attr(*, "name")= chr "Qiita_generator"
 }}
 \usage{
