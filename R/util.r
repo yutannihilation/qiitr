@@ -69,9 +69,12 @@ qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
 #' @param per_page Number of entries (e.g. items, tags, users) in one page.
 #' @param page_offset Number of offset pages.
 #' @param page_limit Max number of pages to retrieve.
+#' @param .expect204
+#'   If \code{TRUE}, return \code{TRUE} for status code 204 and \code{FALSE} for status code 404.
 #' @export
 qiita_api <- function(verb, path, payload = NULL, query = NULL,
-                      per_page = 100L, page_offset = 0L, page_limit = 1L) {
+                      per_page = 100L, page_offset = 0L, page_limit = 1L,
+                      .expect204 = FALSE) {
 
   # Set QIITA_URL envvar to access Qiita API.
   url <- Sys.getenv("QIITA_URL")
@@ -94,6 +97,14 @@ qiita_api <- function(verb, path, payload = NULL, query = NULL,
     verb, url = url, path = path,
     config = header, body = payload, query = query
   )
+
+  # for qiita_is_following_{user,tag}
+  if (.expect204) {
+    status_code <- httr::status_code(res)
+    if(identical(status_code, 204L)) return(TRUE)
+    if(identical(status_code, 404L)) return(FALSE)
+    stop(sprintf("Unknown status code %d: ", status_code))
+  }
 
   # FIXME: specifying `type` is a temporal workaround to avoid error with mime::guess_type()
   first_result <- qiia_api_content(res)

@@ -3,6 +3,7 @@
 \name{tag}
 \alias{qiita_follow_tag}
 \alias{qiita_get_tags}
+\alias{qiita_is_following_tag}
 \alias{qiita_unfollow_tag}
 \alias{tag}
 \title{Qiita Tag API}
@@ -13,6 +14,8 @@ qiita_get_tags(tag_id = NULL, user_id = NULL, per_page = 100L,
 qiita_follow_tag(tag_id)
 
 qiita_unfollow_tag(tag_id)
+
+qiita_is_following_tag(tag_id)
 }
 \arguments{
 \item{tag_id}{Tag ID (e.g. \code{"R"}, \code{"dplyr"}).}

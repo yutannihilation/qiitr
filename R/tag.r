@@ -63,7 +63,7 @@ qiita_get_tags_followed_by_user <- function(user_id,
 #' @rdname tag
 #' @export
 qiita_follow_tag <- function(tag_id) {
-  if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be an scalar character!")
+  if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be a scalar character!")
 
   path <- sprintf("/api/v2/tags/%s/following", tag_id)
   qiita_api("PUT", path = path)
@@ -73,19 +73,17 @@ qiita_follow_tag <- function(tag_id) {
 #' @rdname tag
 #' @export
 qiita_unfollow_tag <- function(tag_id) {
-  if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be an scalar character!")
+  if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be a scalar character!")
 
   path <- sprintf("/api/v2/tags/%s/following", tag_id)
   qiita_api("DELETE", path = path)
 }
 
-# This API seems not to work.
-#
-# #' @rdname tag
-# #' @export
-# qiita_get_tags_following <- function(tag_id,
-#                                 per_page = 100L, page_offset = 0L, page_limit = 1L) {
-#   path <- sprintf("/api/v2/tags/%s/following", tag_id)
-#   qiita_api("GET", path = path,
-#             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
-# }
+#' @rdname tag
+#' @export
+qiita_is_following_tag <- function(tag_id) {
+  if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be a scalar character!")
+
+ path <- sprintf("/api/v2/tags/%s/following", tag_id)
+ qiita_api("GET", path = path, .expect204 = TRUE)
+}

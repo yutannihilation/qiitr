@@ -53,7 +53,7 @@ qiita_get_comments_by_item <- function(item_id, per_page, page_offset, page_limi
 #' @rdname comment
 #' @export
 qiita_delete_comment <- function(comment_id) {
-  if(!purrr::is_scalar_character(comment_id)) stop("comment_id must be an scalar character!")
+  if(!purrr::is_scalar_character(comment_id)) stop("comment_id must be a scalar character!")
 
   path <- sprintf("/api/v2/comments/%s", comment_id)
   qiita_api("DELETE", path = path)
@@ -62,8 +62,8 @@ qiita_delete_comment <- function(comment_id) {
 #' @rdname comment
 #' @export
 qiita_update_comment <- function(comment_id, body) {
-  if(!purrr::is_scalar_character(comment_id)) stop("comment_id must be an scalar character!")
-  if(!purrr::is_scalar_character(body)) stop("body must be an scalar character!")
+  if(!purrr::is_scalar_character(comment_id)) stop("comment_id must be a scalar character!")
+  if(!purrr::is_scalar_character(body)) stop("body must be a scalar character!")
 
   path <- sprintf("/api/v2/comments/%s", comment_id)
   qiita_api("PATCH", path = path,
@@ -73,8 +73,8 @@ qiita_update_comment <- function(comment_id, body) {
 #' @rdname comment
 #' @export
 qiita_post_comment <- function(item_id, body) {
-  if(!purrr::is_scalar_character(item_id)) stop("item_id must be an scalar character!")
-  if(!purrr::is_scalar_character(body)) stop("body must be an scalar character!")
+  if(!purrr::is_scalar_character(item_id)) stop("item_id must be a scalar character!")
+  if(!purrr::is_scalar_character(body)) stop("body must be a scalar character!")
 
   path <- sprintf("/api/v2/items/%s/comments", item_id)
   qiita_api("POST", path = path,

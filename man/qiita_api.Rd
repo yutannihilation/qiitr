@@ -5,7 +5,7 @@
 \title{Send A Request To Qiita API}
 \usage{
 qiita_api(verb, path, payload = NULL, query = NULL, per_page = 100L,
-  page_offset = 0L, page_limit = 1L)
+  page_offset = 0L, page_limit = 1L, .expect204 = FALSE)
 }
 \arguments{
 \item{verb}{Method type (e.g. GET, POST, DELETE).}
@@ -21,6 +21,8 @@ qiita_api(verb, path, payload = NULL, query = NULL, per_page = 100L,
 \item{page_offset}{Number of offset pages.}
 
 \item{page_limit}{Max number of pages to retrieve.}
+
+\item{.expect204}{If \code{TRUE}, return \code{TRUE} for status code 204 and \code{FALSE} for status code 404.}
 }
 \description{
 An \link[httr]{httr} Wrapper for Qiita API.
