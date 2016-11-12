@@ -16,3 +16,7 @@ test_that("qiita_get_tags with user ID", {
   tags <- qiita_get_tags(user_id = "yutannihilation")
   expect_true("R" %in% purrr::map_chr(tags, "id"))
 })
+
+test_that("qiita_is_following_tag works.", {
+  expect_true(qiita_is_following_tag("R"))
+})
