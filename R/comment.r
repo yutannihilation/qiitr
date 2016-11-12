@@ -67,7 +67,7 @@ qiita_update_comment <- function(comment_id, body) {
 
   path <- sprintf("/api/v2/comments/%s", comment_id)
   qiita_api("PATCH", path = path,
-            payload = qiita_payload(body = body))
+            payload = qiita_util_payload(body = body))
 }
 
 #' @rdname qiita_comment
@@ -78,5 +78,5 @@ qiita_post_comment <- function(item_id, body) {
 
   path <- sprintf("/api/v2/items/%s/comments", item_id)
   qiita_api("POST", path = path,
-            payload = qiita_payload(body = body))
+            payload = qiita_util_payload(body = body))
 }

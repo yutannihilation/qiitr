@@ -1,30 +1,30 @@
 #' Generate Payload And Tag For Qiita API
 #'
-#' @name util
+#' @name qiita_util
 #'
 #' @param name Tag name
 #' @param versions Versions (e.g. \code{3.1}, \code{>3.2}).
 #' @param body Content body.
 #' @param title Title.
-#' @param tags Tags. Use \code{qiita_tag} to generate tag objects.
+#' @param tags Tags. Use \code{qiita_util_tag} to generate tag objects.
 #' @param private If \code{TRUE}, the post will be private.
 #' @param coediting If \code{TRUE}, the post will be editable by team members.
 #' @param gist If \code{TRUE}, post the code to Gist.
 #' @param tweet If \code{TRUE}, notify on Twitter.
 #'
 #' @examples
-#' qiita_tag(name = "R", versions = ">3.1")
+#' qiita__util_tag(name = "R", versions = ">3.1")
 #'
-#' qiita_payload(body = "foo",
-#'               title = "test",
-#'               tags = list(
-#'                   qiita_tag(name = "R", versions = ">3.1"),
-#'                   qiita_tag(name = "dplyr")
-#'               ),
-#'               private = TRUE)
+#' qiita_util_payload(body = "foo",
+#'                    title = "test",
+#'                    tags = list(
+#'                      qiita_util_tag(name = "R", versions = ">3.1"),
+#'                      qiita_util_tag(name = "dplyr")
+#'                    ),
+#'                    private = TRUE)
 #'
 #' @export
-qiita_tag <- function(name, versions = NULL) {
+qiita_util_tag <- function(name, versions = NULL) {
   x <- list()
   class(x) <- c("qiita_tag", "list")
 
@@ -33,9 +33,9 @@ qiita_tag <- function(name, versions = NULL) {
   x
 }
 
-#' @rdname util
+#' @rdname qiita_util
 #' @export
-qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
+qiita_util_payload <- function(body = NULL, title = NULL, tags = NULL,
                           private = NULL, coediting = NULL,
                           gist = NULL, tweet = NULL) {
   # tag must be wrapped with list.

@@ -1,31 +1,31 @@
-context("qiita_tag and qiita_payload test")
+context("qiita_util_tag and qiita_util_payload test")
 
 skip_on_cran()
 
-test_that("qiita_tag test", {
+test_that("qiita_util_tag test", {
   expect_equal(
-    qiita_tag(name = "R", versions = ">3.1"),
+    qiita_util_tag(name = "R", versions = ">3.1"),
     structure(list(name = "R", versions = I(">3.1")), class = c("qiita_tag", "list"))
   )
 })
 
-test_that("qiita_tag test without versions", {
+test_that("qiita_util_tag test without versions", {
   expect_equal(
-    qiita_tag(name = "R"),
+    qiita_util_tag(name = "R"),
     structure(list(name = "R", versions = I(list())), class = c("qiita_tag", "list"))
   )
 })
 
-test_that("qiita_tag with multiple versions", {
+test_that("qiita_util_tag with multiple versions", {
   expect_equal(
-    qiita_tag(name = "R", versions = c("3.1", "3.2")),
+    qiita_util_tag(name = "R", versions = c("3.1", "3.2")),
     structure(list(name = "R", versions = I(c("3.1", "3.2"))), class = c("qiita_tag", "list"))
   )
 })
 
 
 
-test_that("qiita_payload", {
+test_that("qiita_util_payload", {
   example_json <- '
 {
   "body": "# Example",
@@ -42,17 +42,17 @@ test_that("qiita_payload", {
   "coediting": false
 }'
 
-  qiitr_json <- qiita_payload(body = "# Example",
+  qiitr_json <- qiita_util_payload(body = "# Example",
                               coediting = FALSE,
                               private = FALSE,
-                              tags = qiita_tag("Ruby", "0.0.1"),
+                              tags = qiita_util_tag("Ruby", "0.0.1"),
                               title = "Example title")
 
   expect_equal(jsonlite::minify(qiitr_json),
                jsonlite::minify(example_json))
 })
 
-test_that("qiita_layload with multiple versions", {
+test_that("qiita_util_payload with multiple versions", {
   example_json <- '
 {
   "body": "# Example",
@@ -69,10 +69,10 @@ test_that("qiita_layload with multiple versions", {
   "coediting": false
 }'
 
-  qiitr_json <- qiita_payload(body = "# Example",
+  qiitr_json <- qiita_util_payload(body = "# Example",
                               coediting = FALSE,
                               private = FALSE,
-                              tags = qiita_tag("Ruby", c("0.0.1", "0.0.2")),
+                              tags = qiita_util_tag("Ruby", c("0.0.1", "0.0.2")),
                               title = "Example title")
 
   expect_equal(jsonlite::minify(qiitr_json),
