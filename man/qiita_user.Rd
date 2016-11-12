@@ -15,8 +15,7 @@
 qiita_get_stockers(item_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
 
-qiita_get_users(user_id, per_page = 100L, page_offset = 0L,
-  page_limit = 1L)
+qiita_get_users(user_id)
 
 qiita_get_followees(user_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
