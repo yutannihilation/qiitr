@@ -18,9 +18,9 @@ qiita_patch_comments(comment_id, body)
 qiita_post_comments(item_id, body)
 }
 \arguments{
-\item{comment_id}{comment ID}
+\item{comment_id}{Comment ID}
 
-\item{item_id}{item(article) ID}
+\item{item_id}{Item(article) ID}
 
 \item{per_page}{number of items per one page}
 

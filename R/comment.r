@@ -1,8 +1,8 @@
 #' Qiita Comment API
 #'
 #' @name comment
-#' @param comment_id comment ID
-#' @param item_id item(article) ID
+#' @param comment_id Comment ID
+#' @param item_id Item(article) ID
 #' @param per_page number of items per one page
 #' @param page_offset page offset
 #' @param page_limit max number of pages to aquire.
