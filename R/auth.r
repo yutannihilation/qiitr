@@ -14,6 +14,8 @@ qiita_set_accesstoken <- function() {
     return(FALSE)
   }
 
+  if(!interactive()) stop("Use Sys.setenv or .Renviron in noninteractive session.")
+
   msg <- "Personal access token for Qiita:"
   if(rstudioapi::isAvailable()) {
     token <- rstudioapi::askForPassword(msg)
