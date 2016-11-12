@@ -34,7 +34,7 @@ qiita_util_payload(body = NULL, title = NULL, tags = NULL,
 Generate Payload And Tag For Qiita API
 }
 \examples{
-qiita__util_tag(name = "R", versions = ">3.1")
+qiita_util_tag(name = "R", versions = ">3.1")
 
 qiita_util_payload(body = "foo",
                    title = "test",

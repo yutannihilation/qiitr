@@ -13,7 +13,7 @@
 #' @param tweet If \code{TRUE}, notify on Twitter.
 #'
 #' @examples
-#' qiita__util_tag(name = "R", versions = ">3.1")
+#' qiita_util_tag(name = "R", versions = ">3.1")
 #'
 #' qiita_util_payload(body = "foo",
 #'                    title = "test",
