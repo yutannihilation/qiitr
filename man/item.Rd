@@ -2,32 +2,32 @@
 % Please edit documentation in R/item.r
 \name{item}
 \alias{item}
-\alias{qiita_delete_item}
-\alias{qiita_delete_stock}
-\alias{qiita_get_item}
-\alias{qiita_get_stock}
-\alias{qiita_patch_item}
-\alias{qiita_post_item}
-\alias{qiita_put_stock}
+\alias{qiita_delete_items}
+\alias{qiita_delete_stocks}
+\alias{qiita_get_items}
+\alias{qiita_get_stocks}
+\alias{qiita_patch_items}
+\alias{qiita_post_items}
+\alias{qiita_put_stocks}
 \title{Qiita Item API}
 \usage{
-qiita_get_item(item_id = NULL, tag_id = NULL, user_id = NULL,
+qiita_get_items(item_id = NULL, tag_id = NULL, user_id = NULL,
   query = NULL, per_page = 100L, page_offset = 0L, page_limit = 1L)
 
-qiita_post_item(title, body, tags = list(qiita_tag("R")), coediting = FALSE,
-  private = FALSE, gist = FALSE, tweet = FALSE)
+qiita_post_items(title, body, tags = list(qiita_tag("R")),
+  coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE)
 
-qiita_delete_item(item_id)
+qiita_delete_items(item_id)
 
-qiita_patch_item(item_id, title, body, tags = list(qiita_tag("R")),
+qiita_patch_items(item_id, title, body, tags = list(qiita_tag("R")),
   private = FALSE)
 
-qiita_delete_stock(item_id)
+qiita_delete_stocks(item_id)
 
-qiita_get_stock(item_id = NULL, user_id = NULL, per_page = 100L,
+qiita_get_stocks(item_id = NULL, user_id = NULL, per_page = 100L,
   page_offset = 0L, page_limit = 1L)
 
-qiita_put_stock(item_id)
+qiita_put_stocks(item_id)
 }
 \arguments{
 \item{item_id}{item(article) ID}

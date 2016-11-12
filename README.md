@@ -19,6 +19,6 @@ devtools::install_github("yutannihilation/qiitr")
 ## Usage
 
 ```r
-q <- Qiita$new(token = "abcdefghijk")
-q$get_item(tag_id = "ggplot2逆引き", page_limit = 5L)
+Sys.setenv(QIITA_ACCESSTOKEN = "abcdefghijk")
+qiita_get_items(tag_id = "ggplot2逆引き", page_limit = 5L)
 ```

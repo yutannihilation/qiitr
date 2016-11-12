@@ -8,7 +8,7 @@
 #' @param page_limit max number of pages to aquire.
 #' @param body body of the item
 #' @export
-qiita_get_comment <- function(comment_id = NULL, item_id = NULL,
+qiita_get_comments <- function(comment_id = NULL, item_id = NULL,
                               per_page = 100L, page_offset = 0L, page_limit = 1L) {
   if(!is.null(comment_id) && !is.null(item_id)) stop("You cannot specify comment_id and item_id both")
   if(is.null(comment_id) && is.null(item_id))   stop("Please specify commend_id or item_id")
@@ -30,14 +30,14 @@ qiita_get_comment <- function(comment_id = NULL, item_id = NULL,
 
 #' @rdname comment
 #' @export
-qiita_delete_comment <- function(comment_id) {
+qiita_delete_comments <- function(comment_id) {
   path <- sprintf("/api/v2/comments/%s", comment_id)
   qiita_api("DELETE", path = path)
 }
 
 #' @rdname comment
 #' @export
-qiita_patch_comment <- function(comment_id, body) {
+qiita_patch_comments <- function(comment_id, body) {
   path <- sprintf("/api/v2/comments/%s", comment_id)
   qiita_api("PATCH", path = path,
             payload = qiita_payload(body = body))
@@ -45,7 +45,7 @@ qiita_patch_comment <- function(comment_id, body) {
 
 #' @rdname comment
 #' @export
-qiita_post_comment <- function(item_id, body) {
+qiita_post_comments <- function(item_id, body) {
   path <- sprintf("/api/v2/items/%s/comments", item_id)
   qiita_api("POST", path = path,
             payload = qiita_payload(body = body))

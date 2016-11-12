@@ -2,20 +2,20 @@
 % Please edit documentation in R/comment.r
 \name{comment}
 \alias{comment}
-\alias{qiita_delete_comment}
-\alias{qiita_get_comment}
-\alias{qiita_patch_comment}
-\alias{qiita_post_comment}
+\alias{qiita_delete_comments}
+\alias{qiita_get_comments}
+\alias{qiita_patch_comments}
+\alias{qiita_post_comments}
 \title{Qiita Comment API}
 \usage{
-qiita_get_comment(comment_id = NULL, item_id = NULL, per_page = 100L,
+qiita_get_comments(comment_id = NULL, item_id = NULL, per_page = 100L,
   page_offset = 0L, page_limit = 1L)
 
-qiita_delete_comment(comment_id)
+qiita_delete_comments(comment_id)
 
-qiita_patch_comment(comment_id, body)
+qiita_patch_comments(comment_id, body)
 
-qiita_post_comment(item_id, body)
+qiita_post_comments(item_id, body)
 }
 \arguments{
 \item{comment_id}{comment ID}

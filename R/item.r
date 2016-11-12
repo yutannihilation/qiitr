@@ -16,7 +16,7 @@
 #' @param gist push to gist or not
 #' @param tweet tweet or not
 #' @export
-qiita_get_item <- function (item_id = NULL, tag_id = NULL, user_id = NULL, query = NULL,
+qiita_get_items <- function (item_id = NULL, tag_id = NULL, user_id = NULL, query = NULL,
                             per_page = 100L, page_offset = 0L, page_limit = 1L) {
   num_of_not_nulls <- sum(!sapply(list(item_id, tag_id, user_id), is.null))
 
@@ -59,7 +59,7 @@ qiita_get_item <- function (item_id = NULL, tag_id = NULL, user_id = NULL, query
 
 #' @rdname item
 #' @export
-qiita_post_item <- function(title, body, tags = list(qiita_tag("R")),
+qiita_post_items <- function(title, body, tags = list(qiita_tag("R")),
                             coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE) {
   path    <- "/api/v2/items"
   payload <- qiita_payload(
@@ -78,14 +78,14 @@ qiita_post_item <- function(title, body, tags = list(qiita_tag("R")),
 
 #' @rdname item
 #' @export
-qiita_delete_item <- function(item_id) {
+qiita_delete_items <- function(item_id) {
   path <- sprintf("/api/v2/items/%s", item_id)
   qiita_api("GET", path = path)
 }
 
 #' @rdname item
 #' @export
-qiita_patch_item <- function(item_id, title, body,
+qiita_patch_items <- function(item_id, title, body,
                              tags = list(qiita_tag("R")), private = FALSE) {
   path <- sprintf("/api/v2/items/%s", item_id)
   payload <- qiita_payload(
@@ -101,14 +101,14 @@ qiita_patch_item <- function(item_id, title, body,
 
 #' @rdname item
 #' @export
-qiita_delete_stock <- function(item_id) {
+qiita_delete_stocks <- function(item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)
   qiita_api("DELETE", path = path)
 }
 
 #' @rdname item
 #' @export
-qiita_get_stock <- function(item_id = NULL, user_id = NULL,
+qiita_get_stocks <- function(item_id = NULL, user_id = NULL,
                             per_page = 100L, page_offset = 0L, page_limit = 1L) {
   if (!is.null(item_id) && !is.null(user_id))
     stop("You cannot specify item_id and user_id both")
@@ -132,7 +132,7 @@ qiita_get_stock <- function(item_id = NULL, user_id = NULL,
 
 #' @rdname item
 #' @export
-qiita_put_stock <- function(item_id) {
+qiita_put_stocks <- function(item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)
   qiita_api("PUT", path = path)
 }
