@@ -11,6 +11,14 @@ qiitr - R Binding for Qiita API
 
 ## Installation
 
+qiitr is now on CRAN.
+
+```r
+install.packages("qiitr")
+```
+
+If you need the development version, try:
+
 ```r
 devtools::install_github("yutannihilation/qiitr")
 ```
