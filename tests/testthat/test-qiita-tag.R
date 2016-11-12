@@ -1,5 +1,7 @@
 context("qiita_tag and qiita_payload test")
 
+skip_on_cran()
+
 test_that("qiita_tag test", {
   expect_equal(
     qiita_tag(name = "R", versions = ">3.1"),

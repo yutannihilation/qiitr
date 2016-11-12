@@ -1,5 +1,7 @@
 context("qiita_get_tags")
 
+skip_on_cran()
+
 test_that("qiita_get_tags with tag ID", {
   tags <- qiita_get_tags(tag_id = "R")
   expect_equal(length(tags), 1)
