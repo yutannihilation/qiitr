@@ -42,7 +42,6 @@ artifacts:
     name: Bits
 
 environment:
-  NOT_CRAN: true
   QIITA_ACCESSTOKEN:
     secure: nN5o74aDNTGgMZsiiFD9A45Sa93Qr6tOlQbnsLGdjpBTHnM4dXhjPeHx4vLXNboi
 
