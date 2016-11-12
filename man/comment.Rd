@@ -2,35 +2,47 @@
 % Please edit documentation in R/comment.r
 \name{comment}
 \alias{comment}
-\alias{qiita_delete_comments}
+\alias{qiita_delete_comment}
 \alias{qiita_get_comments}
-\alias{qiita_patch_comments}
-\alias{qiita_post_comments}
-\title{Qiita Comment API}
+\alias{qiita_post_comment}
+\alias{qiita_update_comment}
+\title{Qiita Comments API}
 \usage{
 qiita_get_comments(comment_id = NULL, item_id = NULL, per_page = 100L,
   page_offset = 0L, page_limit = 1L)
 
-qiita_delete_comments(comment_id)
+qiita_delete_comment(comment_id)
 
-qiita_patch_comments(comment_id, body)
+qiita_update_comment(comment_id, body)
 
-qiita_post_comments(item_id, body)
+qiita_post_comment(item_id, body)
 }
 \arguments{
-\item{comment_id}{Comment ID}
+\item{comment_id}{Comment ID.}
 
-\item{item_id}{Item(article) ID}
+\item{item_id}{Item (article) ID.}
 
-\item{per_page}{number of items per one page}
+\item{per_page}{Number of items per one page.}
 
-\item{page_offset}{page offset}
+\item{page_offset}{Number of offset pages.}
 
-\item{page_limit}{max number of pages to aquire.}
+\item{page_limit}{Max number of pages to retrieve.}
 
 \item{body}{body of the item}
 }
 \description{
-Qiita Comment API
+Get, write, update or delete comments via Qiita API.
+}
+\examples{
+\dontrun{
+# get a comment by id
+qiita_get_comments(comment_id = "1fdbb164e19d79e10203")
+
+# get comments by item id
+qiita_get_comments(item_id = "b4130186e1e095719dcb")
+
+# post a comment to some item
+qiita_post_comment(item_id = "123456789", body = "Thank you!!!")
+}
 }
 

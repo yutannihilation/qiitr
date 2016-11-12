@@ -20,7 +20,7 @@ qiita_api(verb, path, payload = NULL, query = NULL, per_page = 100L,
 
 \item{page_offset}{Number of offset pages.}
 
-\item{page_limit}{Max number of pages to get.}
+\item{page_limit}{Max number of pages to retrieve.}
 }
 \description{
 An \link[httr]{httr} Wrapper for Qiita API.

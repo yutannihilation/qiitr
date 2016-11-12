@@ -68,7 +68,7 @@ qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
 #' @param query Query strings.
 #' @param per_page Number of entries (e.g. items, tags, users) in one page.
 #' @param page_offset Number of offset pages.
-#' @param page_limit Max number of pages to get.
+#' @param page_limit Max number of pages to retrieve.
 #' @export
 qiita_api <- function(verb, path, payload = NULL, query = NULL,
                       per_page = 100L, page_offset = 0L, page_limit = 1L) {
