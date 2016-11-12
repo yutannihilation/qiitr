@@ -33,6 +33,6 @@ qiita_set_accesstoken <- function() {
   message(
     sprintf("To set QIITA_ACCESSTOKEN permanently, write the following line to a file and save it
 as '.Renviron' on current directory or Sys.getenv('R_USER'):
-QIITA_ACCESSTOKEN=%s", token)
+QIITA_ACCESSTOKEN='%s'", token)
   )
 }
