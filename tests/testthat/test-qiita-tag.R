@@ -1,4 +1,4 @@
-context("qiita_tag test")
+context("qiita_tag and qiita_payload test")
 
 test_that("qiita_tag test", {
   expect_equal(
