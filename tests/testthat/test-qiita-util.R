@@ -1,7 +1,5 @@
 context("utilities")
 
-skip_on_cran()
-
 test_that("qiita_util_tag test", {
   expect_equal(
     qiita_util_tag(name = "R", versions = ">3.1"),
