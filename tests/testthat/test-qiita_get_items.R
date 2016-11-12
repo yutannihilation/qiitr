@@ -1,6 +1,7 @@
 context("qiita_get_items")
 
 skip_on_cran()
+skip_on_appveyor()
 
 test_that("qiita_get_items by tag ID", {
   expect_equal(qiita_get_items(tag_id = "R", per_page = 3L, page_limit = 1L),

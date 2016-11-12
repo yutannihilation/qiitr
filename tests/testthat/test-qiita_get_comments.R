@@ -1,6 +1,7 @@
 context("qiita_get_comments")
 
 skip_on_cran()
+skip_on_appveyor()
 
 test_that("qiita_get_comments with comment id works", {
   comment <- qiita_get_comments(comment_id = "1fdbb164e19d79e10203")

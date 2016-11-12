@@ -1,6 +1,7 @@
-context("qiita_util_tag and qiita_util_payload test")
+context("utilities")
 
 skip_on_cran()
+skip_on_appveyor()
 
 test_that("qiita_util_tag test", {
   expect_equal(
