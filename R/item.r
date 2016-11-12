@@ -13,8 +13,9 @@
 #' @param title title of the item
 #' @param body body of the item
 #' @param tags tags of the item
-#' @param gist push to gist or not
 #' @param private private or not
+#' @param coediting If \code{TRUE}, the post will be editable by team members.
+#' @param gist push to gist or not
 #' @param tweet tweet or not
 #' @export
 qiita_get_item <- function (url, token,
@@ -62,14 +63,15 @@ qiita_get_item <- function (url, token,
 #' @rdname item
 #' @export
 qiita_post_item <- function(url, token, title, body, tags = list(qiita_tag("R")),
-                            gist = FALSE, private = FALSE, tweet = FALSE) {
+                            coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE) {
   path    <- "/api/v2/items"
   payload <- qiita_payload(
     body = body,
     title = title,
     tags = tags,
-    gist = gist,
     private = private,
+    coediting = coediting,
+    gist = gist,
     tweet = tweet
   )
 
