@@ -1,4 +1,4 @@
-#' Qiita Item API
+#' Qiita Item (Article) API
 #'
 #' @name item
 #' @param item_id item(article) ID
@@ -59,7 +59,7 @@ qiita_get_items <- function (item_id = NULL, tag_id = NULL, user_id = NULL, quer
 
 #' @rdname item
 #' @export
-qiita_post_items <- function(title, body, tags = list(qiita_tag("R")),
+qiita_post_items <- function(title, body, tags = qiita_tag("R"),
                             coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE) {
   path    <- "/api/v2/items"
   payload <- qiita_payload(

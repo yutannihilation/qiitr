@@ -9,13 +9,13 @@
 \alias{qiita_patch_items}
 \alias{qiita_post_items}
 \alias{qiita_put_stocks}
-\title{Qiita Item API}
+\title{Qiita Item (Article) API}
 \usage{
 qiita_get_items(item_id = NULL, tag_id = NULL, user_id = NULL,
   query = NULL, per_page = 100L, page_offset = 0L, page_limit = 1L)
 
-qiita_post_items(title, body, tags = list(qiita_tag("R")),
-  coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE)
+qiita_post_items(title, body, tags = qiita_tag("R"), coediting = FALSE,
+  private = FALSE, gist = FALSE, tweet = FALSE)
 
 qiita_delete_items(item_id)
 
@@ -59,6 +59,6 @@ qiita_put_stocks(item_id)
 \item{tweet}{tweet or not}
 }
 \description{
-Qiita Item API
+Qiita Item (Article) API
 }
 
