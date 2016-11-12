@@ -23,7 +23,7 @@ test_that("qiita_tag with multiple versions", {
 
 
 
-test_that("qiita_layload", {
+test_that("qiita_payload", {
   example_json <- '
 {
   "body": "# Example",
