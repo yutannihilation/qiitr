@@ -3,3 +3,4 @@
 ^\.travis\.yml$
 ^\.Renviron$
 ^appveyor\.yml$
+^cran-comments\.md$
