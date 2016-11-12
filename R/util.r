@@ -96,20 +96,24 @@ qiita_api <- function(verb, path, payload = NULL, query = NULL,
   )
 
   # FIXME: specifying `type` is a temporal workaround to avoid error with mime::guess_type()
-  result <-
-    httr::content(res, encoding = "UTF-8", type = "application/json")
+  first_result <- qiia_api_content(res)
 
   total_count <- as.integer(res$headers$`total-count`)
   total_page  <- ceiling(total_count / per_page)
-  end_page    <- min(total_page, page_offset + page_limit)
+  end_page    <- as.integer(min(total_page, page_offset + page_limit))
 
   message(sprintf("total count is %d (= %d pages)", total_count, total_page))
 
   if (end_page <= start_page) {
-    return(result)
+    return(first_result)
   }
 
-  for (p in seq(start_page + 1, end_page)) {
+  result <- vector("list", end_page - start_page + 1)
+  result[[1]] <- first_result
+
+  # start with page 2 as we already have page 1.
+  for (i in seq(2, length(result))) {
+    p <- i + start_page - 1
     message(sprintf("getting page %s...", p))
     query$page <- p
 
@@ -118,11 +122,19 @@ qiita_api <- function(verb, path, payload = NULL, query = NULL,
       config = header, body = payload, query = query
     )
 
-    result <- c(
-      result,
-      httr::content(res, encoding = "UTF-8", type = "application/json")
-    )
+    result[[i]] <- qiia_api_content(res)
   }
 
-  result
+  purrr::flatten(result)
+}
+
+qiia_api_content <- function(res) {
+  status_code <- httr::status_code(res)
+
+  if (status_code >= 400) {
+    stop(sprintf("API returns an error (HTTP %d):\n    %s",
+                 status_code,  httr::content(res, encoding = "UTF-8", as = "text")))
+  }
+
+  httr::content(res, encoding = "UTF-8", type = "application/json")
 }
