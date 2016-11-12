@@ -40,3 +40,8 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+environment:
+  my_variable:
+    secure: zcoJXE1nTGJO81BIr7ej18p2pu2+2ydTQQLaTTObETsvAkyO9SGx7rFVXQwwO9o2FE/3X6rFTUe10yD9LSmKZg==
+
