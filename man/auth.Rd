@@ -9,7 +9,7 @@ qiita_set_accesstoken()
 }
 \description{
 qiitr uses \code{QIITA_ACCESSTOKEN} environmental variable for authoriation. You can issue
-a personal access token at \link{https://qiita.com/settings/applications}.
+a personal access token at \url{https://qiita.com/settings/applications}.
 To set the envvar permanently, write \code{QIITA_ACCESSTOKEN = (your access token)} to a file
 and save it as \code{.Renviron} on current directory or the home directory (For more info,
 see \link[base]{Startup}). To set the variable temporarily, use \code{qiita_set_accesstoken}.
