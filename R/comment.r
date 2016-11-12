@@ -2,7 +2,7 @@
 #'
 #' Get, write, update or delete comments via Qiita API.
 #'
-#' @name comment
+#' @name qiita_comment
 #' @param comment_id Comment ID.
 #' @param item_id Item (article) ID.
 #' @param per_page Number of items per one page.
@@ -50,7 +50,7 @@ qiita_get_comments_by_item <- function(item_id, per_page, page_offset, page_limi
                       per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
-#' @rdname comment
+#' @rdname qiita_comment
 #' @export
 qiita_delete_comment <- function(comment_id) {
   if(!purrr::is_scalar_character(comment_id)) stop("comment_id must be a scalar character!")
@@ -59,7 +59,7 @@ qiita_delete_comment <- function(comment_id) {
   qiita_api("DELETE", path = path)
 }
 
-#' @rdname comment
+#' @rdname qiita_comment
 #' @export
 qiita_update_comment <- function(comment_id, body) {
   if(!purrr::is_scalar_character(comment_id)) stop("comment_id must be a scalar character!")
@@ -70,7 +70,7 @@ qiita_update_comment <- function(comment_id, body) {
             payload = qiita_payload(body = body))
 }
 
-#' @rdname comment
+#' @rdname qiita_comment
 #' @export
 qiita_post_comment <- function(item_id, body) {
   if(!purrr::is_scalar_character(item_id)) stop("item_id must be a scalar character!")

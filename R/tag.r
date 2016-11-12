@@ -2,7 +2,7 @@
 #'
 #' Get, follow or unfollow tags via Qiita API.
 #'
-#' @name tag
+#' @name qiita_tag
 #' @param tag_id Tag ID (e.g. \code{"R"}, \code{"dplyr"}).
 #' @param user_id User ID (e.g. \code{"yutannihilation"}).
 #' @param per_page Number of items per one page.
@@ -60,7 +60,7 @@ qiita_get_tags_followed_by_user <- function(user_id,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
-#' @rdname tag
+#' @rdname qiita_tag
 #' @export
 qiita_follow_tag <- function(tag_id) {
   if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be a scalar character!")
@@ -70,7 +70,7 @@ qiita_follow_tag <- function(tag_id) {
 }
 
 
-#' @rdname tag
+#' @rdname qiita_tag
 #' @export
 qiita_unfollow_tag <- function(tag_id) {
   if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be a scalar character!")
@@ -79,7 +79,7 @@ qiita_unfollow_tag <- function(tag_id) {
   qiita_api("DELETE", path = path)
 }
 
-#' @rdname tag
+#' @rdname qiita_tag
 #' @export
 qiita_is_following_tag <- function(tag_id) {
   if(!purrr::is_scalar_character(tag_id)) stop("tag_id must be a scalar character!")

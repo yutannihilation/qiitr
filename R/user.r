@@ -1,11 +1,29 @@
 #' Qiita User API
 #'
-#' @name user
+#' Get, follow or unfollow users via Qiita API.
+#'
+#' @name qiita_user
 #' @param user_id User ID (e.g. \code{"yutannihilation"}).
 #' @param item_id Item (article) ID.
 #' @param per_page Number of items per one page.
 #' @param page_offset Number of offset pages.
 #' @param page_limit Max number of pages to retrieve.
+#'
+#' @examples
+#' \dontrun{
+#' # get a user by id
+#' qiita_get_users("yutannihilation")
+#'
+#' # follow a user
+#' qiita_follow_user("user1")
+#'
+#' # unfollow a user
+#' qiita_unfollow_user("user1")
+#'
+#' # get the current user
+#' qiita_get_authenticated_user()
+#' }
+#'
 #' @export
 qiita_get_stockers <- function(item_id,
                               per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -14,7 +32,7 @@ qiita_get_stockers <- function(item_id,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_get_users <- function(user_id,
                            per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -28,7 +46,7 @@ qiita_get_single_user <- function(user_id, per_page, page_offset, page_limit) {
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_get_followees <- function(user_id,
                                per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -37,7 +55,7 @@ qiita_get_followees <- function(user_id,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_get_followers <- function(user_id,
                                per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -46,7 +64,7 @@ qiita_get_followers <- function(user_id,
             per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_follow_user <- function(user_id) {
   if(!purrr::is_scalar_character(user_id)) stop("user_id must be a scalar character!")
@@ -55,7 +73,7 @@ qiita_follow_user <- function(user_id) {
   qiita_api("PUT", path = path)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_unfollow_user <- function(user_id) {
   if(!purrr::is_scalar_character(user_id)) stop("user_id must be a scalar character!")
@@ -64,7 +82,7 @@ qiita_unfollow_user <- function(user_id) {
   qiita_api("DELETE", path = path)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_is_following_user <- function(user_id) {
   if(!purrr::is_scalar_character(user_id)) stop("user_id must be a scalar character!")
@@ -73,7 +91,7 @@ qiita_is_following_user <- function(user_id) {
   qiita_api("GET", path = path, .expect204 = TRUE)
 }
 
-#' @rdname user
+#' @rdname qiita_user
 #' @export
 qiita_get_authenticated_user <- function() {
   path <- "/api/v2/authenticated_user"

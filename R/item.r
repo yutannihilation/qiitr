@@ -1,6 +1,6 @@
 #' Qiita Item (Article) API
 #'
-#' @name item
+#' @name qiita_item
 #' @param item_id item(article) ID
 #' @param query query string
 #' @param user_id user ID
@@ -57,7 +57,7 @@ qiita_get_items <- function (item_id = NULL, tag_id = NULL, user_id = NULL, quer
   }
 }
 
-#' @rdname item
+#' @rdname qiita_item
 #' @export
 qiita_post_items <- function(title, body, tags = qiita_tag("R"),
                             coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE) {
@@ -76,14 +76,14 @@ qiita_post_items <- function(title, body, tags = qiita_tag("R"),
             payload = payload)
 }
 
-#' @rdname item
+#' @rdname qiita_item
 #' @export
 qiita_delete_items <- function(item_id) {
   path <- sprintf("/api/v2/items/%s", item_id)
   qiita_api("GET", path = path)
 }
 
-#' @rdname item
+#' @rdname qiita_item
 #' @export
 qiita_patch_items <- function(item_id, title, body,
                              tags = list(qiita_tag("R")), private = FALSE) {
@@ -99,14 +99,14 @@ qiita_patch_items <- function(item_id, title, body,
             payload = payload)
 }
 
-#' @rdname item
+#' @rdname qiita_item
 #' @export
 qiita_delete_stocks <- function(item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)
   qiita_api("DELETE", path = path)
 }
 
-#' @rdname item
+#' @rdname qiita_item
 #' @export
 qiita_get_stocks <- function(item_id = NULL, user_id = NULL,
                             per_page = 100L, page_offset = 0L, page_limit = 1L) {
@@ -130,7 +130,7 @@ qiita_get_stocks <- function(item_id = NULL, user_id = NULL,
   }
 }
 
-#' @rdname item
+#' @rdname qiita_item
 #' @export
 qiita_put_stocks <- function(item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)

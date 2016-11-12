@@ -6,7 +6,7 @@
 #' and save it as \code{.Renviron} on current directory or the home directory (For more info,
 #' see \link[base]{Startup}). To set the variable temporarily, use \code{qiita_set_accesstoken}.
 #'
-#' @name auth
+#' @name qiita_auth
 #' @export
 qiita_set_accesstoken <- function() {
   if(!identical(Sys.getenv("QIITA_ACCESSTOKEN"), "")) {
