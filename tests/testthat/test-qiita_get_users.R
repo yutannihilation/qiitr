@@ -1,7 +1,7 @@
 context("qiita_get_users")
 
-skip_on_cran()
 skip_on_appveyor()
+skip_on_cran()
 
 test_that("qiita_get_users works", {
   users <- qiita_get_users("yutannihilation")
