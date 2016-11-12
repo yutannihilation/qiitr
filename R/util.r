@@ -1,47 +1,64 @@
-#' Utililies
-#'
-#' @import jsonlite
+#' Generate Payload And Tag For Qiita API
 #'
 #' @name util
 #'
-#' @param name tag name
-#' @param version version
-#' @param body body
-#' @param title title
-#' @param tags tags
-#' @param gist gist
-#' @param private private
-#' @param tweet tweet
+#' @param name Tag name
+#' @param versions Versions (e.g. \code{3.1}, \code{>3.2}).
+#' @param body Content body.
+#' @param title Title.
+#' @param tags Tags. Use \code{qiita_tag} to generate tag objects.
+#' @param private If \code{TRUE}, the post will be private.
+#' @param coediting If \code{TRUE}, the post will be editable by team members.
+#' @param gist If \code{TRUE}, post the code to Gist.
+#' @param tweet If \code{TRUE}, notify on Twitter.
 #'
 #' @examples
-#' qiita_tag(name = "R", version = ">3.1")
+#' qiita_tag(name = "R", versions = ">3.1")
+#'
+#' qiita_payload(body = "foo",
+#'               title = "test",
+#'               tags = list(
+#'                   qiita_tag(name = "R", versions = ">3.1"),
+#'                   qiita_tag(name = "dplyr")
+#'               ),
+#'               private = TRUE)
 #'
 #' @export
-qiita_tag <- function(name, version = NULL) {
+qiita_tag <- function(name, versions = NULL) {
   x <- list()
+  class(x) <- c("qiita_tag", "list")
+
   x$name    <- name
-  x$version <- version
+  x$versions <- I(versions)
   x
 }
 
 #' @rdname util
 #' @export
 qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
-                          gist = NULL, private = NULL, tweet = NULL) {
-    payload <- list()
+                          private = NULL, coediting = NULL,
+                          gist = NULL, tweet = NULL) {
+  # tag must be wrapped with list.
+  if(inherits(tags, "qiita_tag")) tags <- list(tags)
 
-    payload$body   <- body
-    payload$title  <- title
-    payload$tags   <- tags
-    payload$private <- private
-    payload$tweet  <- tweet
+  payload <- list()
 
-    jsonlite::toJSON(payload, auto_unbox = TRUE)
-  }
+  payload$body   <- body
+  payload$title  <- title
+  payload$tags   <- tags
+  payload$private <- private
+  payload$coediting <- coediting
+  payload$gist   <- gist
+  payload$tweet  <- tweet
+
+  jsonlite::toJSON(payload, auto_unbox = TRUE)
+}
 
 
 
-#' @title A httr Wrapper for Qiita API
+#' Send A Request To Qiita API
+#'
+#' An \link[httr]{httr} Wrapper for Qiita API.
 #'
 #' @name qiita_api
 #' @import httr
