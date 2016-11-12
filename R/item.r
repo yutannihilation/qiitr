@@ -1,8 +1,6 @@
 #' Qiita Item API
 #'
 #' @name item
-#' @param url URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")
-#' @param token Qiita API token
 #' @param item_id item(article) ID
 #' @param query query string
 #' @param user_id user ID
@@ -18,8 +16,7 @@
 #' @param gist push to gist or not
 #' @param tweet tweet or not
 #' @export
-qiita_get_item <- function (url, token,
-                            item_id = NULL, tag_id = NULL, user_id = NULL, query = NULL,
+qiita_get_item <- function (item_id = NULL, tag_id = NULL, user_id = NULL, query = NULL,
                             per_page = 100L, page_offset = 0L, page_limit = 1L) {
   num_of_not_nulls <- sum(!sapply(list(item_id, tag_id, user_id), is.null))
 
@@ -29,7 +26,7 @@ qiita_get_item <- function (url, token,
   # Get newest items
   if (num_of_not_nulls == 0) {
     path <- "/api/v2/items"
-    result <- qiita_api("GET", url = url, path = path, token = token,
+    result <- qiita_api("GET", path = path,
                         query = list(query = query),
                         per_page = per_page, page_offset = page_offset, page_limit = page_limit)
     return(result)
@@ -38,14 +35,14 @@ qiita_get_item <- function (url, token,
   # Get an item by ID (No pagenation is needed)
   if (!is.null(item_id)) {
     path <- sprintf("/api/v2/items/%s", item_id)
-    result <- qiita_api("GET", url = url, path = path, token = token)
+    result <- qiita_api("GET", path = path)
     return(result)
   }
 
   # Get items by tag
   if (!is.null(tag_id)) {
     path <- sprintf("/api/v2/tags/%s/items", tag_id)
-    result <- qiita_api("GET", url = url, path = path, token = token,
+    result <- qiita_api("GET", path = path,
                         per_page = per_page, page_offset = page_offset, page_limit = page_limit)
     return(result)
   }
@@ -53,7 +50,7 @@ qiita_get_item <- function (url, token,
   # Get items by user
   if (!is.null(user_id)) {
     path <- sprintf("/api/v2/users/%s/items", user_id)
-    result <- qiita_api("GET", url = url, path = path, token = token,
+    result <- qiita_api("GET", path = path,
                         per_page = per_page, page_offset = page_offset, page_limit = page_limit)
 
     return(result)
@@ -62,7 +59,7 @@ qiita_get_item <- function (url, token,
 
 #' @rdname item
 #' @export
-qiita_post_item <- function(url, token, title, body, tags = list(qiita_tag("R")),
+qiita_post_item <- function(title, body, tags = list(qiita_tag("R")),
                             coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE) {
   path    <- "/api/v2/items"
   payload <- qiita_payload(
@@ -75,21 +72,20 @@ qiita_post_item <- function(url, token, title, body, tags = list(qiita_tag("R"))
     tweet = tweet
   )
 
-  qiita_api("POST", url = url, path = path, token = token,
+  qiita_api("POST", path = path,
             payload = payload)
 }
 
 #' @rdname item
 #' @export
-qiita_delete_item <- function(url, token, item_id) {
+qiita_delete_item <- function(item_id) {
   path <- sprintf("/api/v2/items/%s", item_id)
-  qiita_api("GET", url = url, path = path, token = token)
+  qiita_api("GET", path = path)
 }
 
 #' @rdname item
 #' @export
-qiita_patch_item <- function(url, token,
-                             item_id, title, body,
+qiita_patch_item <- function(item_id, title, body,
                              tags = list(qiita_tag("R")), private = FALSE) {
   path <- sprintf("/api/v2/items/%s", item_id)
   payload <- qiita_payload(
@@ -99,20 +95,20 @@ qiita_patch_item <- function(url, token,
     private = private
   )
 
-  qiita_api("PATCH", url = url, path = path, token = token,
+  qiita_api("PATCH", path = path,
             payload = payload)
 }
 
 #' @rdname item
 #' @export
-qiita_delete_stock <- function(url, token, item_id) {
+qiita_delete_stock <- function(item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)
-  qiita_api("DELETE", url = url, path = path, token = token)
+  qiita_api("DELETE", path = path)
 }
 
 #' @rdname item
 #' @export
-qiita_get_stock <- function(url, token, item_id = NULL, user_id = NULL,
+qiita_get_stock <- function(item_id = NULL, user_id = NULL,
                             per_page = 100L, page_offset = 0L, page_limit = 1L) {
   if (!is.null(item_id) && !is.null(user_id))
     stop("You cannot specify item_id and user_id both")
@@ -121,14 +117,14 @@ qiita_get_stock <- function(url, token, item_id = NULL, user_id = NULL,
 
   if (!is.null(item_id)) {
     path <- sprintf("/api/v2/items/%s/stock", item_id)
-    result <- qiita_api("GET", url = url, path = path, token = token,
+    result <- qiita_api("GET", path = path,
                         per_page = per_page, page_offset = page_offset, page_limit = page_limit)
     return(result)
   }
 
   if (!is.null(user_id)) {
     path <- sprintf("/api/v2/users/%s/stocks", user_id)
-    result <- qiita_api("GET", url = url, path = path, token = token,
+    result <- qiita_api("GET", path = path,
                         per_page = per_page, page_offset = page_offset, page_limit = page_limit)
     return(result)
   }
@@ -136,7 +132,7 @@ qiita_get_stock <- function(url, token, item_id = NULL, user_id = NULL,
 
 #' @rdname item
 #' @export
-qiita_put_stock <- function(url, token, item_id) {
+qiita_put_stock <- function(item_id) {
   path <- sprintf("/api/v2/items/%s/stock", item_id)
-  qiita_api("PUT", url = url, path = path, token = token)
+  qiita_api("PUT", path = path)
 }

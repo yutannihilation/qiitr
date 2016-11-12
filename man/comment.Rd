@@ -8,20 +8,16 @@
 \alias{qiita_post_comment}
 \title{Qiita Comment API}
 \usage{
-qiita_get_comment(url, token, comment_id = NULL, item_id = NULL,
-  per_page = 100L, page_offset = 0L, page_limit = 1L)
+qiita_get_comment(comment_id = NULL, item_id = NULL, per_page = 100L,
+  page_offset = 0L, page_limit = 1L)
 
-qiita_delete_comment(url, token, comment_id)
+qiita_delete_comment(comment_id)
 
-qiita_patch_comment(url, token, comment_id, body)
+qiita_patch_comment(comment_id, body)
 
-qiita_post_comment(url, token, item_id, body)
+qiita_post_comment(item_id, body)
 }
 \arguments{
-\item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
-
-\item{token}{Qiita API token}
-
 \item{comment_id}{comment ID}
 
 \item{item_id}{item(article) ID}

@@ -12,32 +12,28 @@
 \alias{user}
 \title{Qiita User API}
 \usage{
-qiita_get_stocker(url, token, item_id, per_page = 100L, page_offset = 0L,
+qiita_get_stocker(item_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
 
-qiita_get_user(url, token, user_id, per_page = 100L, page_offset = 0L,
+qiita_get_user(user_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
 
-qiita_get_followee(url, token, user_id, per_page = 100L, page_offset = 0L,
+qiita_get_followee(user_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
 
-qiita_get_follower(url, token, user_id, per_page = 100L, page_offset = 0L,
+qiita_get_follower(user_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
 
-qiita_delete_userfollow(url, token, user_id)
+qiita_delete_userfollow(user_id)
 
-qiita_get_userfollow(url, token, user_id, per_page = 100L, page_offset = 0L,
+qiita_get_userfollow(user_id, per_page = 100L, page_offset = 0L,
   page_limit = 1L)
 
-qiita_put_userfollow(url, token, user_id)
+qiita_put_userfollow(user_id)
 
-qiita_get_authenticated_user(url, token)
+qiita_get_authenticated_user()
 }
 \arguments{
-\item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
-
-\item{token}{Qiita API token}
-
 \item{item_id}{item(article) ID}
 
 \item{per_page}{number of items per one page}

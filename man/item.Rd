@@ -11,29 +11,25 @@
 \alias{qiita_put_stock}
 \title{Qiita Item API}
 \usage{
-qiita_get_item(url, token, item_id = NULL, tag_id = NULL, user_id = NULL,
+qiita_get_item(item_id = NULL, tag_id = NULL, user_id = NULL,
   query = NULL, per_page = 100L, page_offset = 0L, page_limit = 1L)
 
-qiita_post_item(url, token, title, body, tags = list(qiita_tag("R")),
-  coediting = FALSE, private = FALSE, gist = FALSE, tweet = FALSE)
+qiita_post_item(title, body, tags = list(qiita_tag("R")), coediting = FALSE,
+  private = FALSE, gist = FALSE, tweet = FALSE)
 
-qiita_delete_item(url, token, item_id)
+qiita_delete_item(item_id)
 
-qiita_patch_item(url, token, item_id, title, body,
-  tags = list(qiita_tag("R")), private = FALSE)
+qiita_patch_item(item_id, title, body, tags = list(qiita_tag("R")),
+  private = FALSE)
 
-qiita_delete_stock(url, token, item_id)
+qiita_delete_stock(item_id)
 
-qiita_get_stock(url, token, item_id = NULL, user_id = NULL,
-  per_page = 100L, page_offset = 0L, page_limit = 1L)
+qiita_get_stock(item_id = NULL, user_id = NULL, per_page = 100L,
+  page_offset = 0L, page_limit = 1L)
 
-qiita_put_stock(url, token, item_id)
+qiita_put_stock(item_id)
 }
 \arguments{
-\item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
-
-\item{token}{Qiita API token}
-
 \item{item_id}{item(article) ID}
 
 \item{tag_id}{tag ID}

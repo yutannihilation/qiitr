@@ -9,24 +9,20 @@
 \alias{tag}
 \title{Qiita Tag API}
 \usage{
-qiita_get_tags(url, token, tag_id = NULL, user_id = NULL, per_page = 100L,
+qiita_get_tags(tag_id = NULL, user_id = NULL, per_page = 100L,
   page_offset = 0L, page_limit = 1L)
 
-qiita_get_tags_followed_by_user(url, token, user_id, per_page = 100L,
-  page_offset = 0L, page_limit = 1L)
+qiita_get_tags_followed_by_user(user_id, per_page = 100L, page_offset = 0L,
+  page_limit = 1L)
 
-qiita_delete_tags_following(url, token, tag_id)
+qiita_delete_tags_following(tag_id)
 
-qiita_get_tags_following(url, token, tag_id, per_page = 100L,
-  page_offset = 0L, page_limit = 1L)
+qiita_get_tags_following(tag_id, per_page = 100L, page_offset = 0L,
+  page_limit = 1L)
 
-qiita_put_tags_following(url, token, tag_id)
+qiita_put_tags_following(tag_id)
 }
 \arguments{
-\item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com").}
-
-\item{token}{Qiita API token.}
-
 \item{tag_id}{Tag ID.}
 
 \item{user_id}{User ID.}
@@ -38,6 +34,6 @@ qiita_put_tags_following(url, token, tag_id)
 \item{page_limit}{Max number of pages to aquire.}
 }
 \description{
-Qiita Tag API
+Get tags via Qiita API.
 }
 
