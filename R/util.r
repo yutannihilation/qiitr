@@ -62,18 +62,26 @@ qiita_payload <- function(body = NULL, title = NULL, tags = NULL,
 #'
 #' @name qiita_api
 #' @import httr
-#' @param verb method type (GET, POST, DELETE, etc..)
-#' @param url URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")
-#' @param token Qiita API token
-#' @param path path of API
-#' @param payload JSON payload
-#' @param query URI quer
-#' @param per_page number of items/tags/users/etc. in one page
-#' @param page_offset page number to start
-#' @param page_limit the number of pages where no more requests will be sent
+#' @param verb Method type (e.g. GET, POST, DELETE).
+#' @param path Path of API.
+#' @param payload JSON payload.
+#' @param query Query strings.
+#' @param per_page Number of entries (e.g. items, tags, users) in one page.
+#' @param page_offset Number of offset pages.
+#' @param page_limit Max number of pages to get.
 #' @export
-qiita_api <- function(verb, url, path, token, payload = NULL, query = NULL,
+qiita_api <- function(verb, path, payload = NULL, query = NULL,
                       per_page = 100L, page_offset = 0L, page_limit = 1L) {
+
+  # Set QIITA_URL envvar to access Qiita API.
+  url <- Sys.getenv("QIITA_URL")
+  if(identical(url, "")) url <- "https://qiita.com/"
+
+  # Set QIITA_ACCESSTOKEN envvar before.
+  token <- Sys.getenv("QIITA_ACCESSTOKEN")
+  if(identical(token, "")) {
+    warning("Please set QIITA_ACCESSTOKEN envvar to use APIs that needs authorization.")
+  }
 
   if (is.null(query)) query <- list()
   query$per_page <- per_page

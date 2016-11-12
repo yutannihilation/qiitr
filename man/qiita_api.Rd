@@ -4,27 +4,23 @@
 \alias{qiita_api}
 \title{Send A Request To Qiita API}
 \usage{
-qiita_api(verb, url, path, token, payload = NULL, query = NULL,
-  per_page = 100L, page_offset = 0L, page_limit = 1L)
+qiita_api(verb, path, payload = NULL, query = NULL, per_page = 100L,
+  page_offset = 0L, page_limit = 1L)
 }
 \arguments{
-\item{verb}{method type (GET, POST, DELETE, etc..)}
+\item{verb}{Method type (e.g. GET, POST, DELETE).}
 
-\item{url}{URL of Qiita (If you're not using Qiita:Team, this should be "https://qiita.com")}
+\item{path}{Path of API.}
 
-\item{path}{path of API}
+\item{payload}{JSON payload.}
 
-\item{token}{Qiita API token}
+\item{query}{Query strings.}
 
-\item{payload}{JSON payload}
+\item{per_page}{Number of entries (e.g. items, tags, users) in one page.}
 
-\item{query}{URI quer}
+\item{page_offset}{Number of offset pages.}
 
-\item{per_page}{number of items/tags/users/etc. in one page}
-
-\item{page_offset}{page number to start}
-
-\item{page_limit}{the number of pages where no more requests will be sent}
+\item{page_limit}{Max number of pages to get.}
 }
 \description{
 An \link[httr]{httr} Wrapper for Qiita API.
