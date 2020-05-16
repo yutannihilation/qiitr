@@ -1,8 +1,7 @@
 qiitr - R Binding for Qiita API
 ==========================
 
-[![Travis-CI Build Status](https://travis-ci.org/yutannihilation/qiitr.svg?branch=master)](https://travis-ci.org/yutannihilation/qiitr)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/yutannihilation/qiitr?branch=master&svg=true)](https://ci.appveyor.com/project/yutannihilation/qiitr)
+[![R build status](https://github.com/yutannihilation/qiitr/workflows/R-CMD-check/badge.svg)](https://github.com/yutannihilation/qiitr/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/qiitr)](https://cran.r-project.org/package=qiitr)
 
 ## About Qiita
