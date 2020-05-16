@@ -1,10 +1,10 @@
 ## Test environments
-* local Windows install, R 3.3.2
-* ubuntu 12.04 (on travis-ci), R 3.3.1 and devel
-* win-builder (devel)
+* local R installation, R 4.0.0
+* Ubuntu 16.04 (on GitHub Actions CI), R 4.0.0
+* Rhub
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 note
+0 errors | 0 warnings | 1 note
 
-* This is first submission to CRAN.
+This is a maintainance release to fix a compatibility problem with R 4.0.
