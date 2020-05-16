@@ -28,8 +28,8 @@ qiita_util_tag <- function(name, versions = NULL) {
   x <- list()
   class(x) <- c("qiita_tag", "list")
 
-  x$name    <- name
-  x$versions <- I(versions)
+  x$name     <- name
+  x$versions <- if(is.null(versions)) I(list()) else I(versions)
   x
 }
 
