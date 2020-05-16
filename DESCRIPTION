@@ -1,9 +1,13 @@
 Package: qiitr
 Type: Package
 Title: R Interface to Qiita API
-Version: 0.1.0.9000
-Date: 2016-11-12
-Authors@R: person("Hiroaki", "Yutani", , "yutani.ini@gmail.com", c("aut", "cre"))
+Version: 0.1.1
+Authors@R:
+    person(given = "Hiroaki",
+           family = "Yutani",
+           role = c("aut", "cre"),
+           email = "yutani.ini@gmail.com",
+           comment = c(ORCID = "0000-0002-3385-7233"))
 Description: Qiita is a technical knowledge sharing and collaboration platform for programmers.
   See <https://qiita.com/api/v2/docs> for more information.
 URL: https://github.com/yutannihilation/qiitr
