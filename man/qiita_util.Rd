@@ -2,14 +2,21 @@
 % Please edit documentation in R/util.r
 \name{qiita_util}
 \alias{qiita_util}
-\alias{qiita_util_payload}
 \alias{qiita_util_tag}
+\alias{qiita_util_payload}
 \title{Generate Payload And Tag For Qiita API}
 \usage{
 qiita_util_tag(name, versions = NULL)
 
-qiita_util_payload(body = NULL, title = NULL, tags = NULL,
-  private = NULL, coediting = NULL, gist = NULL, tweet = NULL)
+qiita_util_payload(
+  body = NULL,
+  title = NULL,
+  tags = NULL,
+  private = NULL,
+  coediting = NULL,
+  gist = NULL,
+  tweet = NULL
+)
 }
 \arguments{
 \item{name}{Tag name}
@@ -45,4 +52,3 @@ qiita_util_payload(body = "foo",
                    private = TRUE)
 
 }
-

@@ -14,4 +14,3 @@ To set the envvar permanently, write \code{QIITA_ACCESSTOKEN = (your access toke
 and save it as \code{.Renviron} on current directory or the home directory (For more info,
 see \link[base]{Startup}). To set the variable temporarily, use \code{qiita_set_accesstoken}.
 }
-

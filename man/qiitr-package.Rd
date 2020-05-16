@@ -2,13 +2,9 @@
 % Please edit documentation in R/qiitr-package.r
 \docType{package}
 \name{qiitr-package}
-\alias{qiitr}
 \alias{qiitr-package}
+\alias{qiitr}
 \title{R Binding for Qiita API v2}
-\description{
-R Binding for Qiita API v2
-}
 \seealso{
 \url{http://qiita.com/api/v2/docs}
 }
-

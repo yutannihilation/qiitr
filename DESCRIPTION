@@ -19,5 +19,5 @@ LazyData: TRUE
 Encoding: UTF-8
 Suggests:
     testthat
-RoxygenNote: 5.0.1
+RoxygenNote: 7.1.0
 License: MIT + file LICENSE

@@ -2,14 +2,19 @@
 % Please edit documentation in R/comment.r
 \name{qiita_comment}
 \alias{qiita_comment}
-\alias{qiita_delete_comment}
 \alias{qiita_get_comments}
-\alias{qiita_post_comment}
+\alias{qiita_delete_comment}
 \alias{qiita_update_comment}
+\alias{qiita_post_comment}
 \title{Qiita Comments API}
 \usage{
-qiita_get_comments(comment_id = NULL, item_id = NULL, per_page = 100L,
-  page_offset = 0L, page_limit = 1L)
+qiita_get_comments(
+  comment_id = NULL,
+  item_id = NULL,
+  per_page = 100L,
+  page_offset = 0L,
+  page_limit = 1L
+)
 
 qiita_delete_comment(comment_id)
 
@@ -45,4 +50,3 @@ qiita_get_comments(item_id = "b4130186e1e095719dcb")
 qiita_post_comment(item_id = "123456789", body = "Thank you!!!")
 }
 }
-

@@ -4,8 +4,16 @@
 \alias{qiita_api}
 \title{Send A Request To Qiita API}
 \usage{
-qiita_api(verb, path, payload = NULL, query = NULL, per_page = 100L,
-  page_offset = 0L, page_limit = 1L, .expect204 = FALSE)
+qiita_api(
+  verb,
+  path,
+  payload = NULL,
+  query = NULL,
+  per_page = 100L,
+  page_offset = 0L,
+  page_limit = 1L,
+  .expect204 = FALSE
+)
 }
 \arguments{
 \item{verb}{Method type (e.g. GET, POST, DELETE).}
@@ -27,4 +35,3 @@ qiita_api(verb, path, payload = NULL, query = NULL, per_page = 100L,
 \description{
 An \link[httr]{httr} Wrapper for Qiita API.
 }
-
